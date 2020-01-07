@@ -16,17 +16,23 @@
  * - ASL 2.0: http://www.apache.org/licenses/LICENSE-2.0.txt
  */
 
+plugins {
+    id("net.ltgt.errorprone") version "0.8.1" apply false
+}
+
 apply(plugin: "java");
 apply(plugin: "maven");
 apply(plugin: "signing");
 apply(plugin: "osgi");
 apply(plugin: "idea");
 apply(plugin: "eclipse");
+apply(plugin: "net.ltgt.errorprone");
 
-group = "com.github.fge";
+group = "com.github.java-json-tools";
+
 version = "0.8.2-SNAPSHOT";
-sourceCompatibility = "1.6";
-targetCompatibility = "1.6"; // defaults to sourceCompatibility
+sourceCompatibility = JavaVersion.VERSION_1_7;
+targetCompatibility = JavaVersion.VERSION_1_7; // defaults to sourceCompatibility
 
 project.ext {
     description = "Sample JSON Schema related processors using json-schema-core and various external libraries";
@@ -45,6 +51,8 @@ repositories {
  * List of dependencies
  */
 dependencies {
+    errorprone("com.google.errorprone:error_prone_core:2.3.3")
+    errorproneJavac("com.google.errorprone:javac:9+181-r4173-1")
     compile(group: "com.github.fge", name: "json-schema-validator",
         version: "2.2.6");
     compile(group: "com.github.reinert", name: "jjschema", version: "0.6") {
@@ -73,9 +81,9 @@ javadoc {
         def currentJavaVersion = org.gradle.api.JavaVersion.current()
         // FIXME: https://github.com/gradle/gradle/issues/11182
         if (currentJavaVersion.compareTo(org.gradle.api.JavaVersion.VERSION_1_9) >= 0) {
-            addStringOption("-release", "6");
+            addStringOption("-release", "7");
         }
-        links("https://docs.oracle.com/javase/6/docs/api/");
+        links("https://docs.oracle.com/javase/7/docs/api/");
         links("https://www.javadoc.io/doc/com.google.code.findbugs/jsr305/3.0.1/");
         links("https://fasterxml.github.com/jackson-databind/javadoc/2.2.0/");
         links("https://www.javadoc.io/doc/com.google.guava/guava/16.0.1/");
@@ -121,6 +129,20 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 //    classifier = "full";
 //}
 
+/*
+ * Lint all the things!
+ */
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:all" << "-Xlint:-serial" << "-Werror"
+        }
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xwerror', '-quiet')
+        }
+    }
+}
+
 artifacts {
     archives jar;
     archives sourcesJar;
@@ -144,9 +166,8 @@ task pom {
  */
 
 project.ext {
-    gitrwscm = sprintf("git@github.com:fge/%s", name);
-    gitroscm = sprintf("https://github.com/fge/%s.git", name);
-    projectURL = sprintf("https://github.com/fge/%s", name);
+    scmUrl = sprintf("git@github.com:java-json-tools/%s.git", name)
+    projectURL = sprintf("https://github.com/java-json-tools/%s", name);
     sonatypeStaging = "https://oss.sonatype.org/service/local/staging/deploy/maven2/";
     sonatypeSnapshots = "https://oss.sonatype.org/content/repositories/snapshots/";
 };
@@ -206,9 +227,9 @@ uploadArchives {
         url "${projectURL}";
 
         scm {
-            url "${gitrwscm}";
-            connection "${gitrwscm}";
-            developerConnection "${gitroscm}";
+            url "${scmUrl}";
+            connection "${scmUrl}";
+            developerConnection "scm:git:${scmUrl}";
         }
 
         licenses {
@@ -226,9 +247,9 @@ uploadArchives {
 
         developers {
             developer {
-                id "fge";
-                name "Francis Galiegue";
-                email "fgaliegue@gmail.com";
+                id "huggsboson";
+                name "John Huffaker";
+                email "jhuffaker+java-json-tools@gmail.com";
             }
         }
     }
