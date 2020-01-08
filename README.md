@@ -26,7 +26,7 @@ dedicated packages.
 
 ## Current version
 
-The current version is **0.8**.
+The current version is **0.8.2**.
 
 ## Maven artifact
 
@@ -38,7 +38,7 @@ The current version is **0.8**.
 </dependency>
 ```
 
-Versions before 0.9 are available at `groupId` `com.github.fge`.
+Versions before 0.8.3 are available at `groupId` `com.github.fge`.
 
 [LGPLv3 badge]: https://img.shields.io/:license-LGPLv3-blue.svg
 [LGPLv3]: http://www.gnu.org/licenses/lgpl-3.0.html
