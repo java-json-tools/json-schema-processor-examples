@@ -7,6 +7,8 @@ import com.github.fge.jsonschema.core.report.ProcessingMessage;
 public final class CompilingException
     extends ProcessingException
 {
+    private static final long serialVersionUID = -1392370773447805892L;
+
     public CompilingException(final ProcessingMessage message)
     {
         super(message);
