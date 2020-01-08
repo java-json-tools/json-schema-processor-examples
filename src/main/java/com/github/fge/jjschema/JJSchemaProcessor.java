@@ -8,14 +8,17 @@ import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.core.tree.CanonicalSchemaTree;
 import com.github.fge.jsonschema.core.tree.SchemaTree;
 import com.github.fge.jsonschema.core.tree.key.SchemaKey;
-import com.github.reinert.jjschema.JsonSchemaGenerator;
-import com.github.reinert.jjschema.SchemaGeneratorBuilder;
+import com.github.reinert.jjschema.v1.JsonSchemaFactory;
+import com.github.reinert.jjschema.v1.JsonSchemaV4Factory;
 
 public final class JJSchemaProcessor
     extends RawProcessor<Class<?>, SchemaTree>
 {
-    private static final JsonSchemaGenerator GENERATOR
-        = SchemaGeneratorBuilder.draftV4Schema().build();
+    private static final JsonSchemaFactory FACTORY = new JsonSchemaV4Factory();
+
+    static {
+        FACTORY.setAutoPutDollarSchema(true);
+    }
 
     public JJSchemaProcessor()
     {
@@ -29,7 +32,7 @@ public final class JJSchemaProcessor
     {
         final ProcessingMessage message = newMessage(input);
         report.debug(message.setMessage("processing"));
-        final JsonNode node = GENERATOR.generateSchema(input);
+        final JsonNode node = FACTORY.createSchema(input);
         return new CanonicalSchemaTree(SchemaKey.anonymousKey(), node);
     }
 }
