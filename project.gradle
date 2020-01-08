@@ -20,7 +20,7 @@
  * Project-specific settings. Unfortunately we cannot put the name in there!
  */
 group = "com.github.java-json-tools";
-version = "0.8.4-SNAPSHOT";
+version = "0.8.4";
 sourceCompatibility = JavaVersion.VERSION_1_7;
 targetCompatibility = JavaVersion.VERSION_1_7; // defaults to sourceCompatibility
 
@@ -33,7 +33,7 @@ project.ext {
  */
 dependencies {
     compile(group: "com.github.java-json-tools", name: "json-schema-validator",
-        version: "2.2.12");
+        version: "2.2.13");
     compile(group: "com.github.reinert", name: "jjschema", version: "1.16") {
         exclude(group: "com.google.guava", module: "guava");
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-core");
@@ -45,10 +45,10 @@ dependencies {
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-databind");
     }
     compile(group: "com.github.java-json-tools", name: "json-schema-avro",
-        version: "0.1.5");
+        version: "0.1.6");
     compile(group: "com.github.java-json-tools", name: "json-patch",
-        version: "1.11");
-    testCompile(group: "org.testng", name: "testng", version: "6.10") {
+        version: "1.12");
+    testCompile(group: "org.testng", name: "testng", version: "7.1.0") {
         exclude(group: "junit", module: "junit");
         exclude(group: "org.beanshell", module: "bsh");
         exclude(group: "org.yaml", module: "snakeyaml");
@@ -64,10 +64,10 @@ javadoc.options {
     }
     links("https://docs.oracle.com/javase/7/docs/api/");
     links("https://www.javadoc.io/doc/com.google.code.findbugs/jsr305/3.0.2/");
-    links("https://fasterxml.github.com/jackson-databind/javadoc/2.9/");
-    links("https://fasterxml.github.com/jackson-core/javadoc/2.9/");
-    links("https://fasterxml.github.com/jackson-annotations/javadoc/2.9/");
-    links("https://www.javadoc.io/doc/com.google.guava/guava/28.1-android/");
+    links("https://fasterxml.github.com/jackson-databind/javadoc/2.10/");
+    links("https://fasterxml.github.com/jackson-core/javadoc/2.10/");
+    links("https://fasterxml.github.com/jackson-annotations/javadoc/2.10/");
+    links("https://www.javadoc.io/doc/com.google.guava/guava/28.2-android/");
     links("https://java-json-tools.github.io/msg-simple/");
     links("https://java-json-tools.github.io/json-schema-core/1.2.x/");
     links("https://java-json-tools.github.io/json-schema-validator/2.2.x/");
