@@ -20,7 +20,7 @@
  * Project-specific settings. Unfortunately we cannot put the name in there!
  */
 group = "com.github.java-json-tools";
-version = "0.8.5-SNAPSHOT";
+version = "0.8.5";
 sourceCompatibility = JavaVersion.VERSION_1_7;
 targetCompatibility = JavaVersion.VERSION_1_7; // defaults to sourceCompatibility
 
@@ -36,16 +36,18 @@ dependencies {
         version: "2.2.13");
     compile(group: "com.github.reinert", name: "jjschema", version: "1.16") {
         exclude(group: "com.google.guava", module: "guava");
+        exclude(group: "com.fasterxml.jackson.core", module: "jackson-annotations");
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-core");
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-databind");
     }
     compile(group: "org.jsonschema2pojo",
         name: "jsonschema2pojo-core", version: "1.0.1") {
+        exclude(group: "com.fasterxml.jackson.core", module: "jackson-annotations");
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-core");
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-databind");
     }
     compile(group: "com.github.java-json-tools", name: "json-schema-avro",
-        version: "0.1.6");
+        version: "0.1.7");
     compile(group: "com.github.java-json-tools", name: "json-patch",
         version: "1.12");
     testCompile(group: "org.testng", name: "testng", version: "7.1.0") {
