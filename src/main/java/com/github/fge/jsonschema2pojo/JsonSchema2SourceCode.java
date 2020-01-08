@@ -10,17 +10,17 @@ import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.core.tree.SchemaTree;
 import com.github.fge.jsonschema.core.util.ValueHolder;
 import com.google.common.io.Files;
-import com.googlecode.jsonschema2pojo.Annotator;
-import com.googlecode.jsonschema2pojo.DefaultGenerationConfig;
-import com.googlecode.jsonschema2pojo.GenerationConfig;
-import com.googlecode.jsonschema2pojo.Jackson2Annotator;
-import com.googlecode.jsonschema2pojo.SchemaGenerator;
-import com.googlecode.jsonschema2pojo.SchemaMapper;
-import com.googlecode.jsonschema2pojo.SchemaStore;
-import com.googlecode.jsonschema2pojo.rules.RuleFactory;
 import com.sun.codemodel.CodeWriter;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
+import org.jsonschema2pojo.Annotator;
+import org.jsonschema2pojo.DefaultGenerationConfig;
+import org.jsonschema2pojo.GenerationConfig;
+import org.jsonschema2pojo.Jackson2Annotator;
+import org.jsonschema2pojo.SchemaGenerator;
+import org.jsonschema2pojo.SchemaMapper;
+import org.jsonschema2pojo.SchemaStore;
+import org.jsonschema2pojo.rules.RuleFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -64,7 +64,7 @@ public final class JsonSchema2SourceCode
         /*
          * Customize generated code
          */
-        final Annotator annotator = new Jackson2Annotator();
+        final Annotator annotator = new Jackson2Annotator(GENCFG);
         final SchemaStore store = new SchemaStore();
         final RuleFactory ruleFactory
             = new RuleFactory(GENCFG, annotator, store);

@@ -39,8 +39,8 @@ dependencies {
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-core");
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-databind");
     }
-    compile(group: "com.googlecode.jsonschema2pojo",
-        name: "jsonschema2pojo-core", version: "0.3.5") {
+    compile(group: "org.jsonschema2pojo",
+        name: "jsonschema2pojo-core", version: "1.0.1") {
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-core");
         exclude(group: "com.fasterxml.jackson.core", module: "jackson-databind");
     }
@@ -71,4 +71,5 @@ javadoc.options {
     links("https://java-json-tools.github.io/msg-simple/");
     links("https://java-json-tools.github.io/json-schema-core/1.2.x/");
     links("https://java-json-tools.github.io/json-schema-validator/2.2.x/");
+    links("https://joelittlejohn.github.io/jsonschema2pojo/javadocs/1.0.1/");
 }
