@@ -24,10 +24,6 @@ Please note that at this moment, while all are functional, they are pretty basic
 Also note that as the time goes, some processors written in this package migrate to other,
 dedicated packages.
 
-## Current version
-
-The current version is **0.8.2**.
-
 ## Maven artifact
 
 ```xml
