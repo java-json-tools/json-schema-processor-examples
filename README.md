@@ -40,7 +40,7 @@ Versions before 0.8.3 are available at `groupId` `com.github.fge`.
 [LGPLv3]: http://www.gnu.org/licenses/lgpl-3.0.html
 [ASL 2.0 badge]: https://img.shields.io/:license-Apache%202.0-blue.svg
 [ASL 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
-[Travis Badge]: https://api.travis-ci.org/java-json-tools/json-schema-processor-examples.svg?branch=master
-[Travis]: https://travis-ci.org/java-json-tools/json-schema-processor-examples
+[Travis Badge]: https://travis-ci.com/java-json-tools/json-schema-processor-examples.svg?branch=master
+[Travis]: https://travis-ci.com/java-json-tools/json-schema-processor-examples
 [Maven Central badge]: https://img.shields.io/maven-central/v/com.github.java-json-tools/json-schema-processor-examples.svg
 [Maven]: https://search.maven.org/artifact/com.github.java-json-tools/json-schema-processor-examples
